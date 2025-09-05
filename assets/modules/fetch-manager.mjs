@@ -1,20 +1,23 @@
-'use strict';
-
-const categoriesData = '/data/categories.json';
+export const categoriesData = '/data/categories.json';
 
 /**
  * Async function to handle fetching and populating restaurant menu
  * @param {json} - Json file with item categories and amount of available items per category
  */
-const createMenu = async data => {
+export const createMenu = async data => {
   // Initialize empty array to store promises per category
   const jobs = [];
 
   // Initialize empty menu object
   const menu = {};
 
+  // API endpoint from netflify functions
+  const apiUrl = `/.netlify/functions/fetch`;
+
   try {
     const response = await fetch(categoriesData);
+
+    const apiResponse = await fetch(apiUrl);
 
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
@@ -22,12 +25,19 @@ const createMenu = async data => {
 
     const data = await response.json();
 
+    const apiItems = await apiResponse.json();
+
+    console.log('myApi', apiItems);
+
     // Convert categories and amount of items per category to arrays
     const categoriesAndAmounts = Object.entries(data);
 
     // Directly destructure the array and loop through each category to perform fetch for each one
     categoriesAndAmounts.forEach(([category, amount]) => {
-      const menuUrl = `https://free-food-menus-api-two.vercel.app/${category}`;
+      // const menuUrl = `https://free-food-menus-api-two.vercel.app/${category}`;
+      const itemsInCategory = apiItems[category];
+
+      // console.log('Category Object', itemsInCategory);
 
       /**
        * Async function to make call to api to build one promise per category
@@ -36,13 +46,15 @@ const createMenu = async data => {
       */
       async function categoryJob(itemCategory, itemNum, url) {
         try {
-          const response = await fetch(url);
+          // const response = await fetch(url);
 
-          if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-          }
+          // if (!response.ok) {
+          //   throw new Error(`Response status: ${response.status}`);
+          // }
 
-          const itemsInCategory = await response.json();
+          // const itemsInCategory = await response.json();
+
+          // console.log('items', 'in', category, itemsInCategory);
 
           /**
            * Async function to perform check on each item to see which items have invalid images (Error 404)
@@ -88,7 +100,7 @@ const createMenu = async data => {
       }
 
       // Push the built promise per category in jobs array
-      jobs.push(categoryJob(category, amount, menuUrl));
+      jobs.push(categoryJob(category, amount, itemsInCategory));
     });
 
     // Wait until EVERY category job has finished (success OR failure).
@@ -110,9 +122,3 @@ const createMenu = async data => {
     console.log(error.message);
   }
 };
-
-const useMenuData = async function () {
-  const menu = await createMenu(categoriesData);
-};
-
-useMenuData();
