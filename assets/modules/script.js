@@ -113,7 +113,6 @@ const createMenu = async data => {
 
 const useMenuData = async function () {
   const menu = await createMenu(categoriesData);
-  console.log(menu);
 };
 
 useMenuData();
