@@ -15,9 +15,5 @@ addToCart(menuObj.bbqs[1], 1);
 addToCart(menuObj.bbqs[3], 3);
 addToCart(menuObj.bbqs[2], 3);
 
-console.log(cart);
-
 // Call removeFromCart function with cart and position of the item to be removed
 removeFromCart(cart, 1);
-
-console.log(cart);

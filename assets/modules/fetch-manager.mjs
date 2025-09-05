@@ -1,22 +1,27 @@
 export const categoriesData = '/data/categories.json';
 
+// Initialize empty menu object
+const menu = {};
+
 /**
  * Async function to handle fetching and populating restaurant menu
  * @param {json} - Json file with item categories and amount of available items per category
  */
 export const createMenu = async data => {
+  // Check if MENU is already stored in sessionStorage to prevent multiple API calls
+  if (sessionStorage.getItem('storedMenu')) {
+    const obj = JSON.parse(sessionStorage.getItem('storedMenu'));
+    return obj;
+  }
+
   // Initialize empty array to store promises per category
   const jobs = [];
-
-  // Initialize empty menu object
-  const menu = {};
 
   // API endpoint from netflify functions
   const apiUrl = `/.netlify/functions/fetch`;
 
   try {
     const response = await fetch(categoriesData);
-
     const apiResponse = await fetch(apiUrl);
 
     if (!response.ok) {

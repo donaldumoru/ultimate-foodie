@@ -1,19 +1,28 @@
 const cart = [];
 
 /**
- * Function to calculate the price of individual cart items
- * @param {obj,number} - This functions takes in the item object and the number of items and returns the price of the item multiplied by the number of items
-},
-*/
+ * Calculates the total price for a cart item.
+ *
+ * @param {Object} item - The cart item object containing price information.
+ * @param {number} quantity - The number of items.
+ * @returns {number} The total price (item price × quantity).
+ */
+
 const calcPriceOfItem = function (numItems) {
   return this.price * numItems;
 };
 
 /**
- * Function to add Items to cart
- * @param {obj,number} - This functions takes in the item object and the number of items and returns a cart object containing each item with item name, price, number of items, and the order price
-},
-*/
+ * Adds an item to the shopping cart or updates its quantity if it already exists.
+ *
+ * - If the item is already in the cart, increases its quantity and recalculates the order price.
+ * - If the item is new, adds it as a new entry with the quantity and order price.
+ *
+ * @param {{ id: string|number, name: string, price: number }} item - The product to add.
+ * @param {number} numItems - The number of items to add.
+ * @returns {Array} The updated cart containing all items.
+ */
+
 const addToCart = function (item, numItems) {
   if (cart.some(cartItem => cartItem.id === item.id)) {
     cart.find(cartItem => {
@@ -39,10 +48,12 @@ const addToCart = function (item, numItems) {
 };
 
 /**
- * Function to remove Items to cart
- * @param {array, obj, number} - This functions takes in a cart array and the position of the item to remove
-},
-*/
+ * Removes an item from the cart at the specified position.
+ *
+ * @param {Array} cartArr - The shopping cart array.
+ * @param {number} itemPosition - The index of the item to remove.
+ * @returns {Array} The updated cart array.
+ */
 const removeFromCart = function (cartArr, itemPostion) {
   cartArr.splice(itemPostion, 1);
 
@@ -50,10 +61,11 @@ const removeFromCart = function (cartArr, itemPostion) {
 };
 
 /**
- * Function to calculate cart total
- * @param {array} - This function takes in an array and adds together the orderprice of all items in the cart
-},
-*/
+ * Calculates the total price of all items in the cart.
+ *
+ * @param {Array} cartArr - The shopping cart array, where each item contains an `orderPrice`.
+ * @returns {number} The total cost of the cart.
+ */
 const calcTotal = function (cartArr) {
   return cartArr.reduce((acc, item) => acc + item.orderPrice, 0);
 };
