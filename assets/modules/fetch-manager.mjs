@@ -27,8 +27,6 @@ export const createMenu = async data => {
 
     const apiItems = await apiResponse.json();
 
-    console.log('myApi', apiItems);
-
     // Convert categories and amount of items per category to arrays
     const categoriesAndAmounts = Object.entries(data);
 
@@ -75,13 +73,13 @@ export const createMenu = async data => {
             }
           }
 
-          // Make one *promise* per item that checks whether its image loads.
-          // After this line, `checks` is an array of *promises*, not results yet.
+          // Make one promise per item that checks whether its image loads.
+          // After this line, `checks` is an array of promises, not results yet.
           const checks = itemsInCategory.map(item =>
             checkItemImgIsAvailable(item)
           );
 
-          // Wait until *all* image checks finish (success or fail).
+          // Wait until all image checks finish (success or fail).
           // `settled` will be an array of entries like
           //   { status: "fulfilled", value: <food>  OR value: undefined}
           const settledChecks = await Promise.allSettled(checks);
@@ -103,7 +101,7 @@ export const createMenu = async data => {
       jobs.push(categoryJob(category, amount, itemsInCategory));
     });
 
-    // Wait until EVERY category job has finished (success OR failure).
+    // Wait until every category job has finished
     // Each entry will look like:
     //   { status: "fulfilled", value: { itemCategory, results } }
     const settledJobs = await Promise.allSettled(jobs);
