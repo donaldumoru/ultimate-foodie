@@ -8,9 +8,10 @@ const menu = {};
  * @param {json} - Json file with item categories and amount of available items per category
  */
 export const createMenu = async data => {
-  // Check if MENU is already stored in sessionStorage to prevent multiple API calls
-  if (sessionStorage.getItem('storedMenu')) {
-    const obj = JSON.parse(sessionStorage.getItem('storedMenu'));
+  // Check if MENU is already stored in localStorage to prevent multiple API calls
+  if (localStorage.getItem('storedMenu')) {
+    const obj = JSON.parse(localStorage.getItem('storedMenu'));
+
     return obj;
   }
 

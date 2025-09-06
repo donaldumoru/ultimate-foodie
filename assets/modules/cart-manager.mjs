@@ -15,36 +15,31 @@ const calcPriceOfItem = function (numItems) {
 /**
  * Adds an item to the shopping cart or updates its quantity if it already exists.
  *
- * - If the item is already in the cart, increases its quantity and recalculates the order price.
- * - If the item is new, adds it as a new entry with the quantity and order price.
  *
- * @param {{ id: string|number, name: string, price: number }} item - The product to add.
- * @param {number} numItems - The number of items to add.
+ * @param {Array} cartArr - The shopping cart
+ * @param {Object} menuItem - The item to add
+ * @param {Object} numItems - The number of items to add.
  * @returns {Array} The updated cart containing all items.
  */
+const addToCart = function (cartArr, menuItem, numItems) {
+  if (cartArr.some(item => item.id === menuItem.id)) {
+    const sameItem = cartArr.find(item => item.id === menuItem.id);
 
-const addToCart = function (item, numItems) {
-  if (cart.some(cartItem => cartItem.id === item.id)) {
-    cart.find(cartItem => {
-      cartItem.numberofItems += numItems;
+    sameItem.amount = numItems;
+    sameItem.orderPrice = calcPriceOfItem.call(menuItem, sameItem.amount);
 
-      cartItem.orderPrice = calcPriceOfItem.call(
-        cartItem,
-        cartItem.numberofItems
-      );
-    });
-  } else {
-    cart.push({
-      id: item.id,
-      name: item.name,
-      price: item.price,
-      numberofItems: numItems,
-      // Call calcPriceItem to set the price of order to the item object
-      orderPrice: calcPriceOfItem.call(item, numItems),
-    });
+    return cartArr;
   }
 
-  return cart;
+  cartArr.push({
+    id: menuItem.id,
+    name: menuItem.name,
+    price: menuItem.price,
+    amount: numItems,
+    orderPrice: calcPriceOfItem.call(menuItem, numItems),
+  });
+
+  return cartArr;
 };
 
 /**
@@ -70,4 +65,4 @@ const calcTotal = function (cartArr) {
   return cartArr.reduce((acc, item) => acc + item.orderPrice, 0);
 };
 
-export { cart, addToCart, removeFromCart, calcTotal };
+export { cart, calcPriceOfItem, addToCart, removeFromCart, calcTotal };

@@ -9,11 +9,4 @@ import {
   calcTotal,
 } from '../cart-manager.mjs';
 
-// Call AddToCart function with the item and number of items to add to cart
-addToCart(menuObj.bbqs[5], 2);
-addToCart(menuObj.bbqs[1], 1);
-addToCart(menuObj.bbqs[3], 3);
-addToCart(menuObj.bbqs[2], 3);
-
-// Call removeFromCart function with cart and position of the item to be removed
-removeFromCart(cart, 1);
+const MAKE_CART = function (cartArr) {};

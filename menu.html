@@ -4,15 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ultimate Foodie | Menu</title>
-    <script
-      defer
-      src="/assets/modules/ui/render-menu.mjs"
-      type="module"
-    ></script>
   </head>
   <body>
-    <script type="module"></script>
-
+    <a href="menu">Menu</a>
+    <a href="order">Order</a>
     <section class="menu-container"></section>
+
+    <script type="module">
+      import { menu, MAKE_MENU } from '/assets/modules/ui/render-menu.mjs';
+
+      MAKE_MENU(menu);
+    </script>
   </body>
 </html>

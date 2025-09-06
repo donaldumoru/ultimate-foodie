@@ -6,9 +6,9 @@ const menuObj = await createMenu();
 
 const menu = Object.entries(menuObj);
 
-// Check and save menu to sessionStorage if its not already saved
-if (!sessionStorage.getItem('storedMenu')) {
-  sessionStorage.setItem('storedMenu', JSON.stringify(menuObj));
+// Check and save menu to localStorage if its not already saved
+if (!localStorage.getItem('storedMenu')) {
+  localStorage.setItem('storedMenu', JSON.stringify(menuObj));
 }
 
 /**
@@ -17,7 +17,7 @@ if (!sessionStorage.getItem('storedMenu')) {
  * @param {Array} categories - An array of categories,
  * each containing a nested array of items to display.
  */
-export const renderMenu = function (arr) {
+const MAKE_MENU = function (arr) {
   // Destructure array elements into category -> string and items -> array of category items
   arr.map(([category, items]) => {
     const categorySection = document.createElement('section');
@@ -43,4 +43,4 @@ export const renderMenu = function (arr) {
   });
 };
 
-renderMenu(menu);
+export { menu, MAKE_MENU };
