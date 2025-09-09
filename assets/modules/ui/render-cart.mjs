@@ -3,12 +3,23 @@ import { internationalizeNum } from '../utils.mjs';
 
 const menuObj = await createMenu(categoriesData);
 
-import {
-  cart,
-  addToCart,
-  removeFromCart,
-  calcTotal,
-} from '../cart-manager.mjs';
+// import {
+//   cart,
+//   addToCart,
+//   removeFromCart,
+//   calcTotal,
+// } from '../cart-manager.mjs';
+
+/*****************************************
+ *
+ *
+ *
+ * CHECK ALL ELEMENTS THAT ARE CREATED MULTIPLE TIMES AND MAKE SEPARATE FUNCTIONS FOR THEM
+ *
+ *
+ *
+ *
+ *****************************************/
 
 const MAKE_CART = function (cartArr) {
   const orderMenuContainer = document.querySelector('.order-menu-container');
@@ -21,7 +32,7 @@ const MAKE_CART = function (cartArr) {
   const cartHeader = document.createElement('div');
   const cartSize = document.createElement('span');
   cartSize.className = 'cart-size';
-  cartSize.textContent = 'Your Order';
+  cartSize.textContent = 'your order';
   const closeBtn = document.createElement('button');
   closeBtn.textContent = 'X';
   cartHeader.append(cartSize, closeBtn);
@@ -60,6 +71,18 @@ const checkIfCartEmpty = function (cartArr) {
   }
 
   if (cartArr.length === 0) {
+    const cartFooterContainer = document.querySelector(
+      '.cart-footer-container'
+    );
+
+    const cartSummaryContainer = document.querySelector(
+      '.cart-summary-container'
+    );
+
+    if (cartFooterContainer) {
+      cartFooterContainer.remove();
+      cartSummaryContainer.remove();
+    }
     const cartContainer = document.querySelector('.cart-container');
     const displayEmptyContainer = document.createElement('div');
     const displayEmpty = document.createElement('span');
@@ -72,20 +95,37 @@ const checkIfCartEmpty = function (cartArr) {
 };
 
 const updateCartDisplay = function (cartArr, cartItem, total) {
+  const subTotal = internationalizeNum(total);
+
+  const subTotalDisplay = document.querySelector('.sub-total-amount');
+  subTotalDisplay.textContent = 'Sub-Total' + subTotal;
+
   checkIfCartEmpty(cartArr);
 
   // if (cartArr.length > 0) {
   const cartContainer = document.querySelector('.cart-container');
 
-  const subTotal = internationalizeNum(total);
-  const subTotalDisplay = document.querySelector('.sub-total-amount');
-  subTotalDisplay.textContent = 'Sub-Total: ' + subTotal;
+  if (
+    !document.querySelector('.cart-summary-container') &&
+    cartArr.length === 0
+  ) {
+    const cartSummaryContainer = document.createElement('div');
+    cartSummaryContainer.className = 'cart-summary-container';
+    const subTotalDisplay = document.createElement('span');
+    subTotalDisplay.className = 'sub-total-amount';
+    cartSummaryContainer.appendChild(subTotalDisplay);
+    cartContainer.appendChild(cartSummaryContainer);
+    const cartSize = document.querySelector('.cart-size');
+    cartSize.textContent = 'your order';
+  }
 
   const cartSize = document.querySelector('.cart-size');
   const cartItemsQuantity = cartArr.reduce((acc, cartItem) => {
     return acc + cartItem.amount;
   }, 0);
-  cartSize.textContent = `Your Order (${cartItemsQuantity})`;
+  if (cartArr.length > 0) {
+    cartSize.textContent = `your order (${cartItemsQuantity})`;
+  }
 
   const cartItemsContainer = document.querySelector('.cart-items-container');
 
@@ -127,10 +167,6 @@ const updateCartDisplay = function (cartArr, cartItem, total) {
 
   cartItemWrapper.append(itemAmount, itemName, itemPrice);
   cartItemsContainer.appendChild(cartItemWrapper);
-
-  const cartSummaryContainer = document.querySelector(
-    '.cart-summary-container'
-  );
 
   if (!document.querySelector('.cart-footer-container') && cartArr.length > 0) {
     const cartFooterContainer = document.createElement('div');

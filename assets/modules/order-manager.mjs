@@ -1,10 +1,11 @@
 import { menu, MAKE_ORDER_MENU } from './ui/render-order-menu.mjs';
 import {
   cart,
-  calcPriceOfItem,
-  addToCart,
-  removeFromCart,
-  calcTotal,
+  cartManager,
+  // calcPriceOfItem,
+  // addToCart,
+  // removeFromCart,
+  // calcTotal,
 } from './cart-manager.mjs';
 import {
   MAKE_CART,
@@ -78,11 +79,13 @@ const addItemToCart = function (e) {
   const item = e.target.parentElement;
   const itemId = item.dataset.itemId;
 
-  const addToCartBtn = [...item.children].find(child =>
-    child.classList.contains('add-to-cart-btn')
-  );
+  // const addToCartBtn = [...item.children].find(child =>
+  //   child.classList.contains('add-to-cart-btn')
+  // );
 
-  addToCartBtn.textContent = 'Update Cart';
+  // console.log(e.target);
+
+  e.target.textContent = 'update cart';
 
   menu.forEach(([category, menuItems]) => {
     // Find the actual menu object that was clicked
@@ -92,7 +95,7 @@ const addItemToCart = function (e) {
       itemToAdd.numOfItems = itemToAdd.numOfItems ?? this;
 
       // Add item to cart
-      addToCart(
+      cartManager.addToCart(
         //Cart
         cart,
         // Item to add to cart
@@ -100,6 +103,8 @@ const addItemToCart = function (e) {
         //Number of items
         itemToAdd.numOfItems
       );
+
+      itemToAdd.numOfItems = this;
     }
   });
 };
@@ -117,16 +122,45 @@ const removeItemFromCart = function (e) {
   const cartItemClicked = e.target.closest('.cart-item');
   if (!cartItemClicked) return;
 
+  const cartItemClickedId = cartItemClicked.dataset.itemId;
+
+  const allCartItemsWrappers = document.querySelectorAll('.item-wrapper');
+
+  const cartItemToUpdate = [
+    ...[
+      ...[...allCartItemsWrappers].find(
+        wrapper => wrapper.dataset.itemId === cartItemClickedId
+      ).children,
+    ],
+  ];
+
+  const resetBtn = [...cartItemToUpdate].find(el =>
+    el.classList.contains('add-to-cart-btn')
+  );
+  resetBtn.textContent = 'add to cart';
+
+  const resetAmountDisplay = [
+    ...[
+      ...cartItemToUpdate.find(el =>
+        el.classList.contains('amount-btn-wrapper')
+      ).children,
+    ],
+  ].find(el => el.classList.contains('num-amount'));
+
+  resetAmountDisplay.textContent = 1;
+
+  const resetPriceDisplay = [...cartItemToUpdate].find(el =>
+    el.classList.contains('item-price')
+  );
+
   const itemToRemove = this.find(
     cartItem => cartItem.id === cartItemClicked.dataset.itemId
   );
 
+  resetPriceDisplay.textContent = internationalizeNum(itemToRemove.price);
+
   const indexOfItemToRemove = this.indexOf(itemToRemove);
-
-  removeFromCart(this, itemToRemove, indexOfItemToRemove);
-
-  console.log(this);
-
+  cartManager.removeFromCart(this, itemToRemove, indexOfItemToRemove);
   cartItemClicked.remove();
 };
 

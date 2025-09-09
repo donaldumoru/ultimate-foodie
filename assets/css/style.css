@@ -5,6 +5,29 @@ General Styling
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
+}
+
+/****************
+NAVIGATION BAR
+*****************/
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  font-size: 1.05rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  text-transform: uppercase;
 }
 
 /************************************************/
@@ -46,3 +69,10 @@ img {
   display: flex;
 }
 /************************************************/
+
+/**********************
+MEDIA QUERIES
+**********************/
+
+@media only screen and (max-device-width: 768px) {
+}
