@@ -1,7 +1,7 @@
 import { createMenu, categoriesData } from '../fetch-manager.mjs';
 import { internationalizeNum } from '../utils.mjs';
 
-let orderMenuContainer = document.querySelector('.order-menu-container');
+let orderMenuContainer = document.querySelector('.order-menu-wrapper');
 
 /// Make this in a different to avoid the repetiion here and in render-menu
 const menuObj = await createMenu();
@@ -21,7 +21,8 @@ if (!localStorage.getItem('storedMenu')) {
  */
 const MAKE_ORDER_MENU = function (arr) {
   // Destructure array elements into category -> string and items -> array of category items
-  arr.map(([category, items]) => {
+
+  arr.forEach(([category, items]) => {
     const categorySection = document.createElement('section');
     categorySection.className = 'category-container';
     const categoryHeader = document.createElement('h2');
@@ -33,35 +34,45 @@ const MAKE_ORDER_MENU = function (arr) {
     const itemsContainer = document.createElement('section');
     itemsContainer.className = 'items-container';
 
-    items.map(item => {
+    items.forEach(item => {
       const itemWrapper = document.createElement('div');
       itemWrapper.className = 'item-wrapper';
+
       const itemName = document.createElement('p');
       itemName.className = 'item-name';
-      itemName.textContent = 'Name: ' + item.name;
-      itemWrapper.appendChild(itemName);
+      itemName.textContent = item.name;
+
       const itemDescription = document.createElement('p');
-      itemDescription.textContent = 'Description: ' + item.dsc;
-      itemWrapper.appendChild(itemDescription);
+      itemDescription.textContent = item.dsc;
+
       const itemPrice = document.createElement('p');
       itemPrice.textContent = internationalizeNum(item.price);
       itemPrice.className = 'item-price';
-      itemWrapper.appendChild(itemPrice);
 
-      const itemAmount = document.createElement('input');
-      itemAmount.type = 'number';
-      itemAmount.name = 'item-amount';
-      itemAmount.min = 1;
-      itemAmount.className = 'input-amount';
-      itemAmount.value = 1;
-
-      itemWrapper.appendChild(itemAmount);
+      const inputWrapper = document.createElement('div');
+      inputWrapper.className = 'amount-btn-wrapper';
+      const reduceBtnElement = document.createElement('button');
+      reduceBtnElement.className = 'amount-btn';
+      reduceBtnElement.textContent = '-';
+      const numAmount = document.createElement('span');
+      numAmount.className = 'num-amount';
+      numAmount.textContent = 1;
+      const increaseBtnElement = document.createElement('button');
+      increaseBtnElement.className = 'amount-btn';
+      increaseBtnElement.textContent = '+';
+      inputWrapper.append(reduceBtnElement, numAmount, increaseBtnElement);
 
       const addToCartButton = document.createElement('button');
       addToCartButton.className = 'add-to-cart-btn';
       addToCartButton.textContent = 'add to cart';
 
-      itemWrapper.appendChild(addToCartButton);
+      itemWrapper.append(
+        itemName,
+        itemDescription,
+        itemPrice,
+        inputWrapper,
+        addToCartButton
+      );
 
       // set a data attribute of ID of the menu Item to each item
       itemWrapper.setAttribute('data-item-id', item.id);

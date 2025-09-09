@@ -1,3 +1,5 @@
+import { MAKE_CART, updateCartDisplay } from './ui/render-cart.mjs';
+
 const cart = [];
 
 /**
@@ -10,6 +12,16 @@ const cart = [];
 
 const calcPriceOfItem = function (numItems) {
   return this.price * numItems;
+};
+
+/**
+ * Calculates the total price of all items in the cart.
+ *
+ * @param {Array} cartArr - The shopping cart array, where each item contains an `orderPrice`.
+ * @returns {number} The total cost of the cart.
+ */
+const calcTotal = function (cartArr) {
+  return cartArr.reduce((acc, item) => acc + item.orderPrice, 0);
 };
 
 /**
@@ -28,16 +40,25 @@ const addToCart = function (cartArr, menuItem, numItems) {
     sameItem.amount = numItems;
     sameItem.orderPrice = calcPriceOfItem.call(menuItem, sameItem.amount);
 
+    const cartTotal = calcTotal(cartArr);
+
+    updateCartDisplay(cart, sameItem, cartTotal);
+
     return cartArr;
   }
 
-  cartArr.push({
+  const itemToAdd = {
     id: menuItem.id,
     name: menuItem.name,
     price: menuItem.price,
     amount: numItems,
     orderPrice: calcPriceOfItem.call(menuItem, numItems),
-  });
+  };
+
+  cartArr.push(itemToAdd);
+  const cartTotal = calcTotal(cartArr);
+
+  updateCartDisplay(cart, itemToAdd, cartTotal);
 
   return cartArr;
 };
@@ -49,20 +70,13 @@ const addToCart = function (cartArr, menuItem, numItems) {
  * @param {number} itemPosition - The index of the item to remove.
  * @returns {Array} The updated cart array.
  */
-const removeFromCart = function (cartArr, itemPostion) {
+const removeFromCart = function (cartArr, itemToRemove, itemPostion) {
   cartArr.splice(itemPostion, 1);
 
-  return cart;
-};
+  const cartTotal = calcTotal(cartArr);
+  updateCartDisplay(cart, itemToRemove, cartTotal);
 
-/**
- * Calculates the total price of all items in the cart.
- *
- * @param {Array} cartArr - The shopping cart array, where each item contains an `orderPrice`.
- * @returns {number} The total cost of the cart.
- */
-const calcTotal = function (cartArr) {
-  return cartArr.reduce((acc, item) => acc + item.orderPrice, 0);
+  return cart;
 };
 
 export { cart, calcPriceOfItem, addToCart, removeFromCart, calcTotal };

@@ -119,6 +119,8 @@ export const createMenu = async data => {
 
       // Store that category's items on the menu object.
       menu[itemCategory] = results;
+
+      console.log(results);
     }
 
     return menu;

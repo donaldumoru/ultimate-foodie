@@ -19,7 +19,7 @@ if (!localStorage.getItem('storedMenu')) {
  */
 const MAKE_MENU = function (arr) {
   // Destructure array elements into category -> string and items -> array of category items
-  arr.map(([category, items]) => {
+  arr.forEach(([category, items]) => {
     const categorySection = document.createElement('section');
     const categoryHeader = document.createElement('h2');
 
