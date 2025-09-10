@@ -39,7 +39,10 @@ const MAKE_NAV_BAR = function () {
   const logoUl = document.createElement('ul');
   logoUl.className = 'logo';
   const logoLi = document.createElement('li');
-  logoLi.textContent = 'ultimate foodie';
+  const logoLink = document.createElement('a');
+  logoLink.textContent = 'ultimate foodie';
+  logoLink.href = '/';
+  logoLi.appendChild(logoLink);
   logoUl.appendChild(logoLi);
 
   // Nav links --- Second

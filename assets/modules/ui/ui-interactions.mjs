@@ -10,7 +10,7 @@ const initializeNavInteractions = function () {
   const hamburger = document.querySelector('.hamburger5');
   const hamburgerInput = document.querySelector('#hamburger5-input');
 
-  let mediumScreenSize = window.matchMedia('(max-width: 768px)');
+  let mediumScreenSize = window.matchMedia('(max-device-width: 768px)');
 
   addEventListener('DOMContentLoaded', () => {
     if (mediumScreenSize.matches) {
