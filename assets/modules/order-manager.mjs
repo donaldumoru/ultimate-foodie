@@ -1,12 +1,5 @@
 import { menu, MAKE_ORDER_MENU } from './ui/render-order-menu.mjs';
-import {
-  cart,
-  cartManager,
-  // calcPriceOfItem,
-  // addToCart,
-  // removeFromCart,
-  // calcTotal,
-} from './cart-manager.mjs';
+import { cart, cartManager } from './cart-manager.mjs';
 import {
   MAKE_CART,
   updateCartDisplay,

@@ -3,13 +3,6 @@ import { internationalizeNum } from '../utils.mjs';
 
 const menuObj = await createMenu(categoriesData);
 
-// import {
-//   cart,
-//   addToCart,
-//   removeFromCart,
-//   calcTotal,
-// } from '../cart-manager.mjs';
-
 /*****************************************
  *
  *

@@ -6,6 +6,7 @@ General Styling
   padding: 0;
   box-sizing: border-box;
   list-style: none;
+  text-decoration: none;
 }
 
 /****************
@@ -19,7 +20,8 @@ nav {
   padding: 2.5rem;
 }
 
-.nav-links {
+.nav-links,
+.nav-links--mobile {
   display: flex;
   gap: 40px;
   font-size: 1.05rem;
@@ -28,6 +30,55 @@ nav {
 .logo {
   font-size: 1.5rem;
   text-transform: uppercase;
+}
+
+/*******************HAMBURGER********************/
+
+#hamburger5-input {
+  display: none;
+}
+.hamburger5 label {
+  position: relative;
+  display: block;
+  width: 3rem;
+  /* height: 3rem; */
+  margin: 0.5rem;
+  cursor: pointer;
+}
+.hamburger5 label span,
+.hamburger5 label span:before,
+.hamburger5 label span:after {
+  display: block;
+  width: 30px;
+  height: 3px;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+  background-color: black;
+}
+.hamburger5 label span:before,
+.hamburger5 label span:after {
+  position: absolute;
+  content: '';
+}
+.hamburger5 label span:before {
+  top: -8.4px;
+}
+.hamburger5 label span:after {
+  top: 8.4px;
+}
+.hamburger5 label input:checked + span {
+  background-color: transparent;
+}
+.hamburger5 label input:checked + span:before,
+.hamburger5 label input:checked + span:after {
+  top: 0;
+  margin-top: -9.4px;
+}
+.hamburger5 label input:checked + span:before {
+  transform: translateY(8.4px) rotate(-45deg);
+}
+.hamburger5 label input:checked + span:after {
+  transform: translateY(8.4px) rotate(45deg);
 }
 
 /************************************************/
@@ -75,4 +126,16 @@ MEDIA QUERIES
 **********************/
 
 @media only screen and (max-device-width: 768px) {
+  nav {
+    align-items: unset;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100px;
+    font-size: 2.5rem;
+  }
 }
