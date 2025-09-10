@@ -44,9 +44,9 @@ nav {
 .hamburger5 label {
   position: relative;
   display: block;
-  width: 3rem;
+  /* width: 3rem; */
   /* height: 3rem; */
-  margin: 0.5rem;
+  margin: 0.5rem 0;
   cursor: pointer;
 }
 .hamburger5 label span,
