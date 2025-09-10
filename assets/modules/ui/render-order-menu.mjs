@@ -1,7 +1,15 @@
+const initializeOrderMenuContainer = function () {
+  const body = document.querySelector('body');
+  const orderMenuContainer = document.createElement('section');
+  orderMenuContainer.className = 'order-menu-container';
+  const orderMenuWrapper = document.createElement('section');
+  orderMenuWrapper.className = 'order-menu-wrapper';
+  orderMenuContainer.appendChild(orderMenuWrapper);
+  body.append(orderMenuContainer);
+};
+
 import { createMenu, categoriesData } from '../fetch-manager.mjs';
 import { internationalizeNum } from '../utils.mjs';
-
-let orderMenuContainer = document.querySelector('.order-menu-wrapper');
 
 /// Make this in a different to avoid the repetiion here and in render-menu
 const menuObj = await createMenu();
@@ -20,8 +28,9 @@ if (!localStorage.getItem('storedMenu')) {
  * each containing a nested array of items to display.
  */
 const MAKE_ORDER_MENU = function (arr) {
-  // Destructure array elements into category -> string and items -> array of category items
+  let orderMenuContainer = document.querySelector('.order-menu-wrapper');
 
+  // Destructure array elements into category -> string and items -> array of category items
   arr.forEach(([category, items]) => {
     const categorySection = document.createElement('section');
     categorySection.className = 'category-container';
@@ -86,4 +95,4 @@ const MAKE_ORDER_MENU = function (arr) {
   });
 };
 
-export { menu, MAKE_ORDER_MENU };
+export { menu, MAKE_ORDER_MENU, initializeOrderMenuContainer };

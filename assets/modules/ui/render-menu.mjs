@@ -1,6 +1,11 @@
-import { createMenu, categoriesData } from '../fetch-manager.mjs';
+const InitializeMenuContainer = function () {
+  const body = document.querySelector('body');
+  const menuContainer = document.createElement('section');
+  menuContainer.className = 'menu-container';
+  body.append(menuContainer);
+};
 
-let menuContainer = document.querySelector('.menu-container');
+import { createMenu, categoriesData } from '../fetch-manager.mjs';
 
 const menuObj = await createMenu();
 
@@ -18,6 +23,8 @@ if (!localStorage.getItem('storedMenu')) {
  * each containing a nested array of items to display.
  */
 const MAKE_MENU = function (arr) {
+  let menuContainer = document.querySelector('.menu-container');
+
   // Destructure array elements into category -> string and items -> array of category items
   arr.forEach(([category, items]) => {
     const categorySection = document.createElement('section');
@@ -43,4 +50,4 @@ const MAKE_MENU = function (arr) {
   });
 };
 
-export { menu, MAKE_MENU };
+export { InitializeMenuContainer, menu, MAKE_MENU };

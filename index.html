@@ -5,37 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ultimate Foodie</title>
     <link rel="stylesheet" href="assets/css/style.css" />
-    <script
-      defer
-      src="/assets/modules/ui/ui-interactions.mjs"
-      type="module"
-    ></script>
   </head>
   <body>
-    <header>
-      <nav>
-        <div class="hamburger5">
-          <label for="hamburger5-input">
-            <input type="checkbox" id="hamburger5-input" />
-            <span></span>
-          </label>
-        </div>
+    <script type="module">
+      import { MAKE_NAV_BAR } from '/assets/modules/ui/navbar.mjs';
+      import { initializeNavInteractions } from '/assets/modules/ui/ui-interactions.mjs';
 
-        <ul class="nav-links">
-          <a href="about"><li>About</li></a>
-          <a href="locations"><li>Locations</li></a>
-        </ul>
-
-        <ul class="logo">
-          <li>Ultimate Foodie</li>
-        </ul>
-        <ul class="nav-links--mobile">
-          <a class="append" href="menu"><li>Menu</li></a>
-          <li class="order-link">
-            <a href="order" class="order-btn">Order Now</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+      MAKE_NAV_BAR();
+      initializeNavInteractions();
+    </script>
   </body>
 </html>
