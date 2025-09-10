@@ -3,9 +3,13 @@ General Styling
 **************/
 
 :root {
+  /***COLOURS**/
   --desktop-background: #6a6e2b;
   --white: #efebe3;
   --black: #473729;
+
+  /***FONTS****/
+  --text-body: 'Roboto';
 }
 
 * {
@@ -29,16 +33,25 @@ nav {
   text-transform: capitalize;
 }
 
+nav a {
+  color: var(--white);
+}
+
 .nav-links,
 .nav-links--mobile {
   display: flex;
-  gap: 40px;
-  font-size: 1.05rem;
+  gap: 50px;
+  font-size: 0.95rem;
+  font-family: var(--text-body);
 }
 
 .logo {
   font-size: 1.5rem;
+  font-weight: 500;
   text-transform: uppercase;
+  font-family: var(--text-body);
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
 .logo a {
@@ -50,6 +63,7 @@ nav {
   background-color: var(--white);
   border-radius: 7px;
   color: var(--black);
+  font-size: 0.9rem;
 }
 
 /*******************HAMBURGER********************/
@@ -183,4 +197,25 @@ MEDIA QUERIES
     touch-action: pan-x pan-y;
     /* height: 100%; */
   }
+}
+
+/**********************
+FONTS
+************************/
+@font-face {
+  font-family: 'Roboto';
+  src: url('/assets/fonts/roboto/Roboto-Regular.woff2') format('woff2'),
+    url('/assets/fonts/roboto/Roboto-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/assets/fonts/roboto/Roboto-Bold.woff2') format('woff2'),
+    url('/assets/fonts/roboto/Roboto-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
