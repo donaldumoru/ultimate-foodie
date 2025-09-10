@@ -140,7 +140,10 @@ MEDIA QUERIES
     flex-direction: column;
     position: absolute;
     top: 100px;
-    font-size: 2rem;
+    font-size: 2.3rem;
+    width: 100%;
+    left: 0;
+    padding: 1rem;
   }
 
   .logo {
