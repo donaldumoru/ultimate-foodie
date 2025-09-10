@@ -4,6 +4,8 @@ General Styling
 
 :root {
   --desktop-background: #6a6e2b;
+  --white: #efebe3;
+  --black: #473729;
 }
 
 * {
@@ -23,6 +25,8 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 2.5rem;
+  background-color: var(--desktop-background);
+  text-transform: capitalize;
 }
 
 .nav-links,
@@ -35,6 +39,17 @@ nav {
 .logo {
   font-size: 1.5rem;
   text-transform: uppercase;
+}
+
+.logo a {
+  color: var(--white);
+}
+
+.order-btn {
+  padding: 8px 13px;
+  background-color: var(--white);
+  border-radius: 7px;
+  color: var(--black);
 }
 
 /*******************HAMBURGER********************/
@@ -62,7 +77,7 @@ nav {
   height: 3px;
   opacity: 1;
   transition: all 0.3s ease-in-out;
-  background-color: black;
+  background-color: var(--white);
 }
 .hamburger5 label span:before,
 .hamburger5 label span:after {
@@ -140,9 +155,9 @@ MEDIA QUERIES
 
 @media only screen and (max-device-width: 768px) {
   nav {
-    align-items: unset;
+    align-items: center;
     padding: 1rem;
-    background-color: var(--desktop-background);
+    height: 60px;
   }
 
   .nav-links {
@@ -155,7 +170,6 @@ MEDIA QUERIES
     height: 100vh;
     left: 0;
     padding: 1rem;
-    background-color: var(--desktop-background);
 
     transition: all 0.5s ease-in-out;
     transform-origin: left top;

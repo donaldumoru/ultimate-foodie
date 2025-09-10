@@ -61,7 +61,7 @@ const MAKE_NAV_BAR = function () {
   const orderLink = document.createElement('a');
   orderLink.className = 'order-btn';
   orderLink.href = 'order';
-  orderLink.textContent = 'order';
+  orderLink.textContent = 'order now';
   orderLi.appendChild(orderLink);
   navLinksUl2.append(menuLi, orderLi);
 
