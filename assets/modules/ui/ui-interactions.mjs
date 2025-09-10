@@ -9,20 +9,27 @@ const hamburgerInput = document.querySelector('#hamburger5-input');
 
 let mediumScreenSize = window.matchMedia('(max-width: 768px)');
 
-if (mediumScreenSize) {
-  orderBtn.textContent = 'Order';
-}
+addEventListener('DOMContentLoaded', () => {
+  if (mediumScreenSize.matches) {
+    navLinks[0].append(appendEl);
+    orderBtn.textContent = 'Order';
+    hamburger.style.display = 'block';
+  }
+});
 
 const checkScreenSize = function () {
   if (mediumScreenSize.matches) {
+    navLinksDesktop.style.display = 'none';
     navLinks[0].append(appendEl);
     orderBtn.textContent = 'Order';
     hamburger.style.display = 'block';
   } else {
     orderBtn.textContent = 'Order now';
     hamburger.style.display = 'none';
-
+    navLinksDesktop.style.display = 'flex';
     const parentDiv = orderBtn.parentNode.parentNode;
+
+    console.log(parentDiv);
     parentDiv.insertBefore(appendEl, orderBtnLi);
   }
 };

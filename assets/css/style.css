@@ -34,6 +34,10 @@ nav {
 
 /*******************HAMBURGER********************/
 
+.hamburger5 {
+  display: none;
+}
+
 #hamburger5-input {
   display: none;
 }
