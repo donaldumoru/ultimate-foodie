@@ -423,7 +423,8 @@ MEDIA QUERIES
   }
 
   .hero-order-now a {
-    padding: 8px 15px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
   }
 }
 
