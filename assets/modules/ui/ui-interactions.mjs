@@ -16,7 +16,6 @@ const initializeNavInteractions = function () {
     if (mediumScreenSize.matches) {
       navLinks[0].append(appendEl);
       orderBtn.textContent = 'order';
-      hamburger.style.display = 'block';
     }
   });
 
