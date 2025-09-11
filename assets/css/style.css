@@ -32,6 +32,12 @@ General Styling
 NAVIGATION BAR
 *****************/
 
+header {
+  position: sticky;
+  top: 0;
+  /* z-index: 100; */
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -127,20 +133,42 @@ nav a {
 HOMEPAGE
 *************************/
 
+/****MAIN****/
+
 .home-main {
   background-color: var(--desktop-background);
   /* height: 100vh; */
   display: flex;
   padding: 0 3rem;
+  justify-content: center;
 }
 
 .home-background {
   height: 60%;
+  position: relative;
 }
 
 .home-background img:first-of-type {
   width: 100%;
   border-radius: var(--main-border-radius);
+}
+
+.hero-title {
+  position: absolute;
+  margin-top: 80px;
+  font-size: 3rem;
+  max-width: 45vw;
+  text-align: center;
+  color: var(--black);
+}
+
+.hero-title h1 {
+  font-weight: 100;
+}
+
+/*********BEST SELLERS SECTION***********/
+.best-sellers {
+  height: 100vh;
 }
 
 /************************************************/
@@ -318,6 +346,11 @@ MEDIA QUERIES
 
   .home-background img:first-of-type {
     border-radius: var(--main-mobile-border-radius);
+  }
+
+  .hero-title {
+    font-size: 1rem;
+    max-width: 60vw;
   }
 }
 
