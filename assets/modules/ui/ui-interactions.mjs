@@ -17,7 +17,7 @@ const initializeNavInteractions = function () {
   const contactLi = document.querySelector('.contact');
   const homeBackgroundImg = document.querySelector('.home-background-img');
 
-  let mediumScreenSize = window.matchMedia('(max-device-width: 768px)');
+  let mediumScreenSize = window.matchMedia('(max-width: 768px)');
 
   addEventListener('DOMContentLoaded', () => {
     contactLi.style.display = 'none';
@@ -45,11 +45,19 @@ const initializeNavInteractions = function () {
     }
   };
 
-  window.addEventListener('resize', checkScreenSize.bind(window.screen.width));
+  window.addEventListener('resize', checkScreenSize);
+
+  function setNavTop() {
+    const top = header.getBoundingClientRect().bottom;
+
+    navLinksDesktop.style.top = `${top}px`;
+  }
 
   const hamburgerClick = function () {
+    nav.classList.toggle('nav--active', hamburgerInput.checked);
+    setNavTop();
+
     if (hamburgerInput.checked) {
-      header.style.position = 'unset';
       navLinksDesktop.style.display = 'flex';
       nav.classList.add('nav--active');
       orderBtn.classList.add('nav-links-mobile--background');
