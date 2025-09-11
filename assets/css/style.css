@@ -13,11 +13,15 @@ General Styling
   /***FONTS****/
   --text-body: 'Roboto';
 
+  /*****FONT SIZE*****/
+  --h1-font-size: 3rem;
+
   /******MARGINS and PADDINGS*****/
   --main-padding: 2.1rem 3rem;
   --mobile-main-padding: 1rem;
   --main-border-radius: 15px;
   --main-mobile-border-radius: 8px;
+  --section-btw-padding: 8rem 3rem;
 
   --nav-h: 50px;
 }
@@ -165,11 +169,10 @@ HOMEPAGE
 .hero-title {
   position: absolute;
   margin-top: 80px;
-  font-size: 3rem;
   max-width: 45vw;
   text-align: center;
   color: var(--black);
-  /* top: 50%; */
+  font-size: var(--h1-font-size);
   left: 50%;
   transform: translate(-50%, 0%);
 }
@@ -218,10 +221,31 @@ HOMEPAGE
   font-size: 1.2rem;
 }
 
-/*********BEST SELLERS SECTION***********/
-.best-sellers {
+/*********MUST TRY SECTION***********/
+.section-must-try {
   background-color: var(--desktop-background);
-  height: 100vh;
+  padding: var(--section-btw-padding);
+  display: flex;
+  justify-content: space-between;
+  color: var(--white);
+  align-items: center;
+}
+
+.must-try-text-wrapper {
+  max-width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section-must-try h2 {
+  font-size: 3rem;
+  font-weight: 100;
+}
+
+.section-must-try p {
+  font-family: var(--text-body);
+  line-height: 25px;
 }
 
 /************************************************/
@@ -438,6 +462,21 @@ MEDIA QUERIES
   .hero-order-now a {
     padding: 8px 12px;
     font-size: 0.8rem;
+  }
+
+  .section-must-try {
+    padding: 3rem 1rem;
+    flex-direction: column;
+    align-items: unset;
+    gap: 25px;
+  }
+
+  .must-try-text-wrapper {
+    max-width: 100%;
+  }
+
+  .section-must-try h2 {
+    font-size: 1.7rem;
   }
 }
 

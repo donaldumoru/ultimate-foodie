@@ -1,5 +1,10 @@
 {
   "herosection": {
     "title": "Fast-served, flavor-rich food"
+  },
+
+  "musttrysection": {
+    "title": "The Must-Trys",
+    "description": "Handpicked from customer reviews, these dishes represent the very best of our kitchen — flavorful, satisfying, and always worth ordering."
   }
 }

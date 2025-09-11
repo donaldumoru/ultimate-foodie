@@ -1,3 +1,9 @@
+import { createMenu } from '../fetch-manager.mjs';
+
+const menuObj = await createMenu();
+
+const menu = Object.entries(menuObj);
+
 const homepageDataFile = '/data/homepage.json';
 
 const fetchHomepageData = async function (data) {
@@ -23,3 +29,33 @@ const MAKE_MAIN = function (data) {
 };
 
 MAKE_MAIN(homepageData);
+
+const renderHighestRated = function (menu) {
+  let maxItemsToRate = 5;
+
+  const allMenuItems = menu
+    .flat()
+    .filter(el => typeof el !== 'string')
+    .flat()
+    .sort((a, b) => a.rate - b.value);
+
+  const highestRated = allMenuItems.reduce((acc, item) => {
+    if (acc.length < maxItemsToRate) {
+      acc.push(item);
+    }
+    return acc;
+  }, []);
+
+  console.log(highestRated);
+};
+
+renderHighestRated(menu);
+
+const MAKE_MUST_TRY_SECTION = function (data) {
+  const mustTryTitle = document.querySelector('.must-try-title');
+  mustTryTitle.textContent = data.musttrysection.title;
+  const mustTryDesc = document.querySelector('.must-try-desc');
+  mustTryDesc.textContent = data.musttrysection.description;
+};
+
+MAKE_MUST_TRY_SECTION(homepageData);
