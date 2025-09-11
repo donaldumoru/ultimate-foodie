@@ -84,7 +84,7 @@ nav a {
 .hamburger label span:after {
   display: block;
   width: 25px;
-  height: 2px;
+  height: 3px;
   opacity: 1;
   transition: all 0.3s ease-in-out;
   background-color: var(--white);
