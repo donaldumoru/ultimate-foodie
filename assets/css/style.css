@@ -205,12 +205,12 @@ MEDIA QUERIES
   }
 
   .nav-links li:first-child {
-    border-top: 0.5px solid var(--black);
+    border-top: 1px solid var(--black);
     padding-top: 50px;
   }
 
   .nav-links li:last-child {
-    border-bottom: 0.5px solid var(--black);
+    border-bottom: 1px solid var(--black);
     padding-bottom: 50px;
   }
 
