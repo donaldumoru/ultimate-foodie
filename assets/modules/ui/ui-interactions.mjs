@@ -33,11 +33,9 @@ const initializeNavInteractions = function () {
   window.addEventListener('resize', checkScreenSize.bind(window.screen.width));
 
   const hamburgerClick = function () {
-    if (hamburgerInput.checked) {
-      navLinksDesktop.style.display = 'flex';
-    } else {
-      navLinksDesktop.style.display = 'none';
-    }
+    hamburgerInput.checked
+      ? (navLinksDesktop.style.display = 'flex')
+      : (navLinksDesktop.style.display = 'none');
   };
 
   hamburger.addEventListener('click', hamburgerClick);
