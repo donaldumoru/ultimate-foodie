@@ -34,7 +34,14 @@ const MAKE_NAV_BAR = function () {
   locationLink.href = 'locations';
   locationLink.textContent = 'locations';
   locationLi.appendChild(locationLink);
-  navLinksUl1.append(aboutLi, locationLi);
+
+  const ContactLi = document.createElement('li');
+  const ContactLink = document.createElement('a');
+  ContactLink.href = 'contact';
+  ContactLink.textContent = 'contact';
+  ContactLi.appendChild(ContactLink);
+
+  navLinksUl1.append(aboutLi, ContactLi, locationLi);
 
   // Logo
   const logoUl = document.createElement('ul');

@@ -17,7 +17,7 @@ const initializeNavInteractions = function () {
 
   addEventListener('DOMContentLoaded', () => {
     if (mediumScreenSize.matches) {
-      navLinks[0].append(appendEl);
+      navLinks[0].prepend(appendEl);
       orderBtn.textContent = 'order';
     }
   });
