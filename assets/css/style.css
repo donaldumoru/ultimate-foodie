@@ -406,8 +406,10 @@ MEDIA QUERIES
   .hero-order-now {
     right: unset;
     left: unset;
-    padding: 10px 30px;
-    gap: 20px;
+    /* padding: 10px 30px; */
+    /* gap: 20px; */
+    padding: 10px;
+    gap: 60px;
     margin: 0;
     bottom: 1rem;
   }
