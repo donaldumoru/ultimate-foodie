@@ -19,7 +19,6 @@ const homepageData = await fetchHomepageData(homepageDataFile);
 
 const MAKE_MAIN = function (data) {
   const heroH1 = document.querySelector('h1');
-  console.log(heroH1);
   heroH1.textContent = data.herosection.title;
 };
 

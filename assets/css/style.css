@@ -291,6 +291,7 @@ MEDIA QUERIES
     transform-origin: left top;
     gap: 10px;
     font-family: unset;
+    z-index: 1000;
   }
 
   .nav-links li {

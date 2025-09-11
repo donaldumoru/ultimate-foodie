@@ -1,6 +1,8 @@
 //  Wrap entire nav interactions in initializeNavInteractions function
 // so I can wait for navBar to be loaded before this funtions kicks off
 const initializeNavInteractions = function () {
+  const body = document.querySelector('body');
+  const header = document.querySelector('header');
   const nav = document.querySelector('nav');
   const navLinks = document.querySelectorAll('.nav-links');
   const navLinksDesktop = document.querySelector('.nav-links');
@@ -47,11 +49,13 @@ const initializeNavInteractions = function () {
 
   const hamburgerClick = function () {
     if (hamburgerInput.checked) {
+      header.style.position = 'unset';
       navLinksDesktop.style.display = 'flex';
       nav.classList.add('nav--active');
       orderBtn.classList.add('nav-links-mobile--background');
       logo.children[0].children[0].classList.add('nav-links-mobile---active');
     } else {
+      header.style.position = 'sticky';
       navLinksDesktop.style.display = 'none';
       nav.classList.remove('nav--active');
       orderBtn.classList.remove('nav-links-mobile--background');
