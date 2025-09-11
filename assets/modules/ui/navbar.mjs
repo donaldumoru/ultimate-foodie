@@ -23,6 +23,32 @@ const MAKE_NAV_BAR = function () {
   const navLinksUl1 = document.createElement('ul');
   navLinksUl1.className = 'nav-links';
 
+  const navLinesWrapper = document.createElement('div');
+  navLinesWrapper.classList.add('nav-lines-wrapper');
+  let num = 1;
+  const navLinesOne = document.createElement('div');
+  const navLinesTwo = document.createElement('div');
+  const navLinesThree = document.createElement('div');
+  const navLinesFour = document.createElement('div');
+  const navLinesFive = document.createElement('div');
+
+  /// I mean, its not fun typing out each one and adding a className so why not try the below method
+  [navLinesOne, navLinesTwo, navLinesThree, navLinesFour, navLinesFive].forEach(
+    line => {
+      line.classList = `nav-line-${num}`;
+      num++;
+    }
+  );
+  navLinesWrapper.append(
+    navLinesOne,
+    navLinesTwo,
+    navLinesThree,
+    navLinesFour,
+    navLinesFive
+  );
+
+  console.log(navLinesWrapper);
+
   const aboutLi = document.createElement('li');
   const aboutLink = document.createElement('a');
   aboutLink.href = 'about';
@@ -41,7 +67,7 @@ const MAKE_NAV_BAR = function () {
   ContactLink.textContent = 'contact';
   ContactLi.appendChild(ContactLink);
 
-  navLinksUl1.append(aboutLi, ContactLi, locationLi);
+  navLinksUl1.append(aboutLi, ContactLi, locationLi, navLinesWrapper);
 
   // Logo
   const logoUl = document.createElement('ul');
