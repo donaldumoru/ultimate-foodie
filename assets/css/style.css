@@ -9,7 +9,7 @@ General Styling
   --black: #473729;
 
   /***FONTS****/
-  --text-body: 'Roboto';
+  /* --text-body: 'Roboto'; */
 }
 
 * {
@@ -42,14 +42,14 @@ nav a {
   display: flex;
   gap: 50px;
   font-size: 0.95rem;
-  font-family: var(--text-body);
+  /* font-family: var(--text-body); */
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: 500;
   text-transform: uppercase;
-  font-family: var(--text-body);
+  /* font-family: var(--text-body); */
   font-weight: bold;
   letter-spacing: 2px;
 }
@@ -172,6 +172,10 @@ MEDIA QUERIES
     align-items: center;
     padding: 1rem;
     height: 60px;
+  }
+
+  .hamburger5 {
+    display: flex;
   }
 
   .nav-links {

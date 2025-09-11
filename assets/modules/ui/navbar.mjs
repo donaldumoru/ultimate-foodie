@@ -2,7 +2,7 @@ const MAKE_NAV_BAR = function () {
   const body = document.querySelector('body');
 
   // Header
-  const header = document.createElement('header');
+  const header = document.querySelector('header');
   //Nav
   const nav = document.createElement('nav');
 
@@ -68,7 +68,7 @@ const MAKE_NAV_BAR = function () {
   // Append everything -- bring it all together
   nav.append(hamburger, navLinksUl1, logoUl, navLinksUl2);
   header.append(nav);
-  body.append(header);
+  body.prepend(header);
 };
 
 export { MAKE_NAV_BAR };

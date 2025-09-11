@@ -22,16 +22,11 @@ const initializeNavInteractions = function () {
 
   const checkScreenSize = function () {
     if (mediumScreenSize.matches) {
-      navLinksDesktop.style.display = 'none';
       navLinks[0].append(appendEl);
       orderBtn.textContent = 'order';
-      hamburger.style.display = 'block';
     } else {
       orderBtn.textContent = 'order now';
-      hamburger.style.display = 'none';
-      navLinksDesktop.style.display = 'flex';
       const parentDiv = orderBtn.parentNode.parentNode;
-
       parentDiv.insertBefore(appendEl, orderBtnLi);
     }
   };

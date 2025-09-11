@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ultimate Foodie | Order</title>
     <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- <script type="module" src="assets/modules/order-manager.mjs"></script> -->
   </head>
   <body>
     <script type="module">
       import { MAKE_NAV_BAR } from '/assets/modules/ui/navbar.mjs';
       import { initializeNavInteractions } from '/assets/modules/ui/ui-interactions.mjs';
+      import { initializeOrderManager } from '/assets/modules/order-manager.mjs';
+
       import {
         initializeOrderMenuContainer,
         MAKE_ORDER_MENU,
@@ -20,6 +23,10 @@
       initializeNavInteractions();
       initializeOrderMenuContainer();
       MAKE_ORDER_MENU(menu);
+      initializeOrderManager();
     </script>
+
+    <header></header>
+    <main></main>
   </body>
 </html>
