@@ -8,13 +8,14 @@ const MAKE_NAV_BAR = function () {
 
   // Hamburger
   const hamburger = document.createElement('div');
-  hamburger.className = 'hamburger5';
+  hamburger.className = 'hamburger';
   const hamburgerInput = document.createElement('label');
-  hamburgerInput.setAttribute('for', 'hamburger5-input');
+  hamburgerInput.setAttribute('for', 'hamburger-input');
   const input = document.createElement('input');
   input.setAttribute('type', 'checkbox');
-  input.id = 'hamburger5-input';
+  input.id = 'hamburger-input';
   const hamburgerSpan = document.createElement('span');
+  hamburgerSpan.className = 'hamburger-span';
   hamburgerInput.append(input, hamburgerSpan);
   hamburger.appendChild(hamburgerInput);
 

@@ -1,14 +1,17 @@
 //  Wrap entire nav interactions in initializeNavInteractions function
 // so I can wait for navBar to be loaded before this funtions kicks off
 const initializeNavInteractions = function () {
+  const nav = document.querySelector('nav');
   const navLinks = document.querySelectorAll('.nav-links');
   const navLinksDesktop = document.querySelector('.nav-links');
   const orderBtn = document.querySelector('.order-btn');
   const orderBtnLi = document.querySelector('.order-link');
   const appendEl = document.querySelector('.append');
   const navLinksMobile = document.querySelector('.nav-links--mobile');
-  const hamburger = document.querySelector('.hamburger5');
-  const hamburgerInput = document.querySelector('#hamburger5-input');
+  const hamburger = document.querySelector('.hamburger');
+  const hamburgerInput = document.querySelector('#hamburger-input');
+  const hamburgerSpan = document.querySelector('.hamburger-span');
+  const logo = document.querySelector('.logo');
 
   let mediumScreenSize = window.matchMedia('(max-device-width: 768px)');
 
@@ -33,9 +36,19 @@ const initializeNavInteractions = function () {
   window.addEventListener('resize', checkScreenSize.bind(window.screen.width));
 
   const hamburgerClick = function () {
-    hamburgerInput.checked
-      ? (navLinksDesktop.style.display = 'flex')
-      : (navLinksDesktop.style.display = 'none');
+    if (hamburgerInput.checked) {
+      navLinksDesktop.style.display = 'flex';
+      nav.classList.add('nav--active');
+      orderBtn.classList.add('nav-links-mobile--background');
+      logo.children[0].children[0].classList.add('nav-links-mobile---active');
+    } else {
+      navLinksDesktop.style.display = 'none';
+      nav.classList.remove('nav--active');
+      orderBtn.classList.remove('nav-links-mobile--background');
+      logo.children[0].children[0].classList.remove(
+        'nav-links-mobile---active'
+      );
+    }
   };
 
   hamburger.addEventListener('click', hamburgerClick);

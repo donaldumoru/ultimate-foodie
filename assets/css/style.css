@@ -54,10 +54,6 @@ nav a {
   letter-spacing: 2px;
 }
 
-.logo a {
-  color: var(--white);
-}
-
 .order-btn {
   padding: 6px 10px;
   background-color: var(--white);
@@ -68,15 +64,14 @@ nav a {
 
 /*******************HAMBURGER********************/
 
-.hamburger5 {
+.hamburger {
   display: none;
-  margin-right: 20px;
 }
 
-#hamburger5-input {
+#hamburger-input {
   display: none;
 }
-.hamburger5 label {
+.hamburger label {
   position: relative;
   display: block;
   width: fit-content;
@@ -84,9 +79,9 @@ nav a {
   margin: 0.5rem 0;
   cursor: pointer;
 }
-.hamburger5 label span,
-.hamburger5 label span:before,
-.hamburger5 label span:after {
+.hamburger label span,
+.hamburger label span:before,
+.hamburger label span:after {
   display: block;
   width: 25px;
   height: 3px;
@@ -94,29 +89,29 @@ nav a {
   transition: all 0.3s ease-in-out;
   background-color: var(--white);
 }
-.hamburger5 label span:before,
-.hamburger5 label span:after {
+.hamburger label span:before,
+.hamburger label span:after {
   position: absolute;
   content: '';
 }
-.hamburger5 label span:before {
+.hamburger label span:before {
   top: -8.4px;
 }
-.hamburger5 label span:after {
+.hamburger label span:after {
   top: 8.4px;
 }
-.hamburger5 label input:checked + span {
+.hamburger label input:checked + span {
   background-color: transparent;
 }
-.hamburger5 label input:checked + span:before,
-.hamburger5 label input:checked + span:after {
+.hamburger label input:checked + span:before,
+.hamburger label input:checked + span:after {
   top: 0;
   margin-top: -9.4px;
 }
-.hamburger5 label input:checked + span:before {
+.hamburger label input:checked + span:before {
   transform: translateY(8.4px) rotate(-45deg);
 }
-.hamburger5 label input:checked + span:after {
+.hamburger label input:checked + span:after {
   transform: translateY(8.4px) rotate(45deg);
 }
 
@@ -175,23 +170,49 @@ MEDIA QUERIES
     height: 60px;
   }
 
-  .hamburger5 {
+  .hamburger {
     display: flex;
+    margin-right: 20px;
+  }
+
+  .hamburger label input:checked + span {
+    background-color: transparent;
+  }
+  .hamburger label input:checked + span:before,
+  .hamburger label input:checked + span:after {
+    background-color: var(--black);
   }
 
   .nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 100px;
+    top: 50px;
     font-size: 2.3rem;
     width: 100%;
     height: 100vh;
     left: 0;
-    padding: 1rem;
-
+    padding: 5rem 1rem;
+    background-color: var(--white);
     transition: all 0.5s ease-in-out;
     transform-origin: left top;
+  }
+
+  .nav--active {
+    background-color: var(--white);
+  }
+
+  .nav-links a {
+    color: var(--black);
+  }
+
+  .nav-links-mobile---active {
+    color: var(--black);
+  }
+
+  .nav-links-mobile--background {
+    background-color: var(--black);
+    color: var(--white);
   }
 
   .logo {
@@ -201,6 +222,10 @@ MEDIA QUERIES
   button {
     touch-action: pan-x pan-y;
     /* height: 100%; */
+  }
+
+  .home-body {
+    background-color: var(--desktop-background);
   }
 }
 
