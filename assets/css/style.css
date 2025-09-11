@@ -17,6 +17,7 @@ General Styling
   --main-padding: 2.1rem 3rem;
   --mobile-main-padding: 1rem;
   --main-border-radius: 15px;
+  --main-mobile-border-radius: 8px;
 }
 
 * {
@@ -312,6 +313,10 @@ MEDIA QUERIES
 
   .home-main {
     padding: 0 1rem;
+  }
+
+  .home-background img:first-of-type {
+    border-radius: var(--main-mobile-border-radius);
   }
 }
 
