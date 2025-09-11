@@ -59,9 +59,9 @@ nav a {
 }
 
 .order-btn {
-  padding: 8px 13px;
+  padding: 6px 10px;
   background-color: var(--white);
-  border-radius: 7px;
+  border-radius: 5px;
   color: var(--black);
   font-size: 0.9rem;
 }
@@ -195,7 +195,6 @@ MEDIA QUERIES
 
   .logo {
     font-size: 0.8rem;
-    font-weight: 500;
   }
 
   button {
