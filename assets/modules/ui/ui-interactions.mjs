@@ -12,13 +12,19 @@ const initializeNavInteractions = function () {
   const hamburgerInput = document.querySelector('#hamburger-input');
   const hamburgerSpan = document.querySelector('.hamburger-span');
   const logo = document.querySelector('.logo');
+  const contactLi = document.querySelector('.contact');
+  const homeBackgroundImg = document.querySelector('.home-background-img');
 
   let mediumScreenSize = window.matchMedia('(max-device-width: 768px)');
 
   addEventListener('DOMContentLoaded', () => {
+    contactLi.style.display = 'none';
+
     if (mediumScreenSize.matches) {
       navLinks[0].prepend(appendEl);
       orderBtn.textContent = 'order';
+      contactLi.style.display = 'block';
+      homeBackgroundImg.src = 'assets/images/homepage/main_mobile.jpg';
     }
   });
 
@@ -26,10 +32,14 @@ const initializeNavInteractions = function () {
     if (mediumScreenSize.matches) {
       navLinks[0].prepend(appendEl);
       orderBtn.textContent = 'order';
+      contactLi.style.display = 'block';
+      homeBackgroundImg.src = 'assets/images/homepage/main_mobile.jpg';
     } else {
       orderBtn.textContent = 'order now';
       const parentDiv = orderBtn.parentNode.parentNode;
       parentDiv.insertBefore(appendEl, orderBtnLi);
+      contactLi.style.display = 'none';
+      homeBackgroundImg.src = 'assets/images/homepage/main.jpg';
     }
   };
 

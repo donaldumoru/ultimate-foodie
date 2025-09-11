@@ -47,8 +47,6 @@ const MAKE_NAV_BAR = function () {
     navLinesFive
   );
 
-  console.log(navLinesWrapper);
-
   const aboutLi = document.createElement('li');
   const aboutLink = document.createElement('a');
   aboutLink.href = 'about';
@@ -62,6 +60,7 @@ const MAKE_NAV_BAR = function () {
   locationLi.appendChild(locationLink);
 
   const ContactLi = document.createElement('li');
+  ContactLi.className = 'contact';
   const ContactLink = document.createElement('a');
   ContactLink.href = 'contact';
   ContactLink.textContent = 'contact';

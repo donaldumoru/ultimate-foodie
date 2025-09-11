@@ -5,11 +5,18 @@ General Styling
 :root {
   /***COLOURS**/
   --desktop-background: #6a6e2b;
+  --desktop-background: #5d4037; /**IDEAS --- ONE*/
+
   --white: #efebe3;
   --black: #473729;
 
   /***FONTS****/
-  /* --text-body: 'Roboto'; */
+  --text-body: 'Roboto';
+
+  /******MARGINS and PADDINGS*****/
+  --main-padding: 2.1rem 3rem;
+  --mobile-main-padding: 1rem;
+  --main-border-radius: 15px;
 }
 
 * {
@@ -28,7 +35,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2.5rem;
+  padding: var(--main-padding);
   background-color: var(--desktop-background);
   text-transform: capitalize;
 }
@@ -41,21 +48,21 @@ nav a {
 .nav-links--mobile {
   display: flex;
   gap: 50px;
-  font-size: 0.95rem;
-  /* font-family: var(--text-body); */
+  font-size: 1rem;
+  font-family: var(--text-body);
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: 500;
   text-transform: uppercase;
-  /* font-family: var(--text-body); */
+  font-family: var(--text-body);
   font-weight: bold;
   letter-spacing: 2px;
 }
 
 .order-btn {
-  padding: 6px 10px;
+  padding: 10px 15px;
   background-color: var(--white);
   border-radius: 5px;
   color: var(--black);
@@ -119,13 +126,25 @@ nav a {
 HOMEPAGE
 *************************/
 
+.home-main {
+  background-color: var(--desktop-background);
+  /* height: 100vh; */
+  display: flex;
+  padding: 0 3rem;
+}
+
+.home-background {
+  height: 60%;
+}
+
+.home-background img:first-of-type {
+  width: 100%;
+  border-radius: var(--main-border-radius);
+}
+
 /************************************************/
 h2 {
   text-transform: capitalize;
-}
-
-img {
-  width: 200px;
 }
 
 .category-container {
@@ -166,7 +185,7 @@ MEDIA QUERIES
 @media only screen and (max-device-width: 768px) {
   nav {
     align-items: center;
-    padding: 1rem;
+    padding: var(--mobile-main-padding);
     height: 60px;
   }
 
@@ -220,11 +239,6 @@ MEDIA QUERIES
     border-bottom: 3px solid var(--black);
   }
 
-  .nav-links li:last-child {
-    /* border-bottom: 1px solid var(--black); */
-    /* padding-bottom: 50px; */
-  }
-
   .nav-lines-wrapper {
     display: flex;
     flex-direction: column;
@@ -267,6 +281,7 @@ MEDIA QUERIES
 
   .nav-links a {
     color: var(--black);
+    display: block;
   }
 
   .nav-links-mobile---active {
@@ -282,6 +297,10 @@ MEDIA QUERIES
     font-size: 0.8rem;
   }
 
+  .order-btn {
+    padding: 6px 10px;
+  }
+
   button {
     touch-action: pan-x pan-y;
     /* height: 100%; */
@@ -289,6 +308,10 @@ MEDIA QUERIES
 
   .home-body {
     background-color: var(--desktop-background);
+  }
+
+  .home-main {
+    padding: 0 1rem;
   }
 }
 
