@@ -248,6 +248,10 @@ HOMEPAGE
   line-height: 25px;
 }
 
+.section-must-try a {
+  font-family: var(--text-body);
+}
+
 /************************************************/
 h2 {
   text-transform: capitalize;
