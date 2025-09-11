@@ -196,6 +196,22 @@ MEDIA QUERIES
     background-color: var(--white);
     transition: all 0.5s ease-in-out;
     transform-origin: left top;
+    gap: 10px;
+  }
+
+  .nav-links li {
+    /* border-bottom: 0.5px solid var(--black); */
+    padding: 1.2rem 0;
+  }
+
+  .nav-links li:first-child {
+    border-top: 0.5px solid var(--black);
+    padding-top: 50px;
+  }
+
+  .nav-links li:last-child {
+    border-bottom: 0.5px solid var(--black);
+    padding-bottom: 50px;
   }
 
   .nav--active {
