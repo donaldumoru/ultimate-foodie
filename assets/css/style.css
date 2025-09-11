@@ -140,12 +140,13 @@ HOMEPAGE
   /* height: 100vh; */
   display: flex;
   padding: 0 3rem;
-  justify-content: center;
+  position: relative;
+  /* justify-content: center; */
 }
 
 .home-background {
   height: 60%;
-  position: relative;
+  /* position: relative; */
 }
 
 .home-background img:first-of-type {
@@ -160,14 +161,58 @@ HOMEPAGE
   max-width: 45vw;
   text-align: center;
   color: var(--black);
+  /* top: 50%; */
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 
 .hero-title h1 {
   font-weight: 100;
 }
 
+.hero-order-now {
+  position: absolute;
+  background-color: var(--white);
+  padding: 20px 30px;
+  right: 5rem;
+  bottom: 2rem;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  gap: 60px;
+  /* margin-top: 100px; */
+  border-radius: var(--main-border-radius);
+}
+
+.hero-order-now a {
+  padding: 12px 20px;
+  background-color: #795548;
+  color: var(--white);
+  font-family: var(--text-body);
+}
+
+.order-now-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.order-now-text-wrapper div:nth-child(1) {
+  font-family: var(--text-body);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--black);
+}
+
+.order-now-text-wrapper div:nth-child(2) {
+  font-size: 1.2rem;
+}
+
 /*********BEST SELLERS SECTION***********/
 .best-sellers {
+  background-color: var(--desktop-background);
   height: 100vh;
 }
 
@@ -342,6 +387,8 @@ MEDIA QUERIES
 
   .home-main {
     padding: 0 1rem;
+    /* display: flex; */
+    justify-content: center;
   }
 
   .home-background img:first-of-type {
@@ -351,6 +398,30 @@ MEDIA QUERIES
   .hero-title {
     font-size: 1rem;
     max-width: 60vw;
+    top: unset;
+    left: unset;
+    transform: unset;
+  }
+
+  .hero-order-now {
+    right: unset;
+    left: unset;
+    padding: 10px 30px;
+    gap: 20px;
+    margin: 0;
+    bottom: 1rem;
+  }
+
+  .order-now-text-wrapper div:nth-child(1) {
+    font-size: 0.6rem;
+  }
+
+  .order-now-text-wrapper div:nth-child(2) {
+    font-size: 1rem;
+  }
+
+  .hero-order-now a {
+    padding: 8px 15px;
   }
 }
 
