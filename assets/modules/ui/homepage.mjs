@@ -33,10 +33,6 @@ const MAKE_MAIN = function (data) {
 
 MAKE_MAIN(homepageData);
 
-// const renderRatingCount = function(num){
-//     const
-// }
-
 const renderHighestRated = function (menu) {
   let maxItemsToRate = 5;
 
@@ -56,7 +52,7 @@ const renderHighestRated = function (menu) {
 
     const itemImg = document.createElement('img');
     itemImg.src = item.img;
-
+    itemImg.loading = 'lazy';
     const textWrapper = document.createElement('div');
     textWrapper.className = 'must-try-items-text-wrapper';
 
@@ -148,14 +144,12 @@ const scrollRatingsIntoView = function (e) {
   if (!e.target.classList.contains('arrows')) {
     const clicked = e.target;
 
-    // const unclicked = [...e.target.parentElement.children].filter(
-    //   child => child !== e.target
-    // )[0];
-
     if (clicked.classList.contains('right-arrow')) {
       if (scrollPosition >= 800) {
         return;
       }
+
+      console.log(mustTryWrapper.clientWidth);
 
       scrollPosition += 800;
       scrollOptions.left = scrollPosition;
@@ -172,3 +166,15 @@ const scrollRatingsIntoView = function (e) {
 
 scrollToRatingsContainer.addEventListener('click', scrollToFirstOrLast);
 arrowsContainer.addEventListener('click', scrollRatingsIntoView);
+
+const intersectionObserver = new IntersectionObserver(entries => {
+  // If intersectionRatio is 0, the target is out of view
+  // and we do not need to do anything.
+  if (entries[0].intersectionRatio <= 0) return;
+
+  if (entries[0].isIntersecting) {
+    mustTryWrapper.classList.add('slide-in');
+  }
+});
+// start observing
+intersectionObserver.observe(mustTryWrapper);

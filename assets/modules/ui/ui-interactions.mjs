@@ -59,6 +59,7 @@ const initializeNavInteractions = function () {
 
     if (hamburgerInput.checked) {
       navLinksDesktop.style.display = 'flex';
+      navLinksDesktop.classList.add('fade-in-element');
       nav.classList.add('nav--active');
       orderBtn.classList.add('nav-links-mobile--background');
       logo.children[0].children[0].classList.add('nav-links-mobile---active');
